@@ -5,10 +5,13 @@
 class TGL
 {
     public:
-        TGL();
-        ~TGL();
        void Loop();
        void Start();
+
+    private:
+        TGL();
+        ~TGL();
+
 };
 
 SDL_Window *window = SDL_CreateWindow("Title", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 680, 480, SDL_WINDOW_SHOWN);
@@ -62,6 +65,6 @@ void Loop(void InputLoop())
         SDL_RenderClear(renderer);
         SDL_RenderPresent(renderer);
     
-        SDL_Delay(100);
+        SDL_Delay(1000/60);
     }
 }
