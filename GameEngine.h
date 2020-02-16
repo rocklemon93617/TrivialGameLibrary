@@ -2,20 +2,32 @@
 #include <iostream>
 #include <stdio.h>
 
+SDL_Window *window = SDL_CreateWindow("Title", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 680, 480, SDL_WINDOW_SHOWN);
+
+SDL_Renderer  *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+
+SDL_Surface *surface = SDL_GetWindowSurface(window);
+
 class TGL
 {
     public:
        void Loop();
        void Start();
+       void Rectangle();
 
     private:
         TGL();
         ~TGL();
-
 };
 
-SDL_Window *window = SDL_CreateWindow("Title", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 680, 480, SDL_WINDOW_SHOWN);
-SDL_Renderer  *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+
+void Rectangle(int posX, int posY, int sizeX, int sizeY)
+{
+    SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
+    SDL_Rect rect = {posX, posY, sizeX, sizeY};
+    SDL_RenderFillRect(renderer, &rect);
+}
+
 
 TGL::TGL()
 {
@@ -26,6 +38,7 @@ TGL::TGL()
         SDL_Log("Could not create a renderer: %s", SDL_GetError());
         //return -1;
     }
+
 }
 
 TGL::~TGL()
@@ -41,7 +54,7 @@ void Start(void InputStart())
 }
 
 void Loop(void InputLoop())
-{    
+{
 
     while(true)
     {
@@ -54,15 +67,12 @@ void Loop(void InputLoop())
             }
         }
 
-        //demo color
-        Uint8 red = rand() % 255;
-        Uint8 green = rand() % 255;
-        Uint8 blue = rand() % 255;
-        SDL_SetRenderDrawColor(renderer, red, green, blue, 255);
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+        SDL_RenderClear(renderer);
 
         InputLoop();
 
-        SDL_RenderClear(renderer);
+        
         SDL_RenderPresent(renderer);
     
         SDL_Delay(1000/60);

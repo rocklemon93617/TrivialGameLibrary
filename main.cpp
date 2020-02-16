@@ -8,7 +8,8 @@ void GameStart()
 
 void GameLoop()
 {
-    printf("GameLoop method\n");
+    //printf("GameLoop method\n");
+    Rectangle(300, 200, 100, 100);
 }
 
 int main(int argc, char *args[])
