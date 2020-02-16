@@ -1,3 +1,10 @@
 # TrivialGameLibrary
-TGL - very simple game library based on SDL
-main.cpp is example of the library usage [...]
+
+## What is it ?
+TGL - very simple game library based on SDL 
+
+## Example
+```
+currently example usage is in main.cpp file
+```
+[...]
