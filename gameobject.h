@@ -1,0 +1,6 @@
+class gameobject
+{
+    public:
+
+    private:
+};
